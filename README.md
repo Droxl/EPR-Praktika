@@ -1,2 +1,2 @@
 # EPR-Praktika
-Lösungsvarianten aller EPR-Aufgaben. 
+Lösungsvarianten aller Aufgaben der EPR-Praktika. Es empfiehlt sich die Lösungen nachzuvollziehen und nicht blind zu übernehmen.
