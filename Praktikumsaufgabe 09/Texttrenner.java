@@ -1,4 +1,3 @@
-package ungeloest;
 /**
  * Diese Klasse trennt Wörter einer Zeichenkette anhand einer gegebenen 
  * zweiten Zeichenkette, welche nur aus Trennzeichen besteht.
