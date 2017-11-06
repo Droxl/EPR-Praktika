@@ -17,7 +17,7 @@ public class Texttrenner {
     private final String trennerkette;
     /**
      * Die jeweils aktuelle Position.
-     * Der Pfeil steht jeweils auf am Anfang des nächsten auszugebenden Wortes.
+     * Der Pfeil steht jeweils am Anfang des nächsten auszugebenden Wortes.
      */
     private int position;
     /**
