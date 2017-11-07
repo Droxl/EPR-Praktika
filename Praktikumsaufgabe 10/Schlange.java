@@ -1,7 +1,6 @@
 /**
  * Ein Objekt dieser Klasse repräsentiert die Schlange des Schlange-Spiels, 
- * das mit "wachsenden" Arrays realisiert ist.
- * @author Droxl
+ * das mit einem anwachsenden Array realisiert ist.
  */
 public class Schlange {
     /**
@@ -53,15 +52,16 @@ public class Schlange {
         //Anfänglich bewegt sich die Schlange auf dem Spielfeld nach rechts.
         richtungsVektor = 1;
         //Zu Anfang besteht die Schlange nur aus dem Kopf.
+        //schlangenLaenge = 1;
     }
     /**
-     * Hierdurch ändert sich die aktuelle Bewegungsrichtung
-     * um 90 Grad im Uhrzeigersinn.
-     * Durch diese Methode geht die Schlange nicht voran,
-     * es ändert sich lediglich die Bewegungsrichtung.
-     * Die zweimalige Anwendung dieser Methode
-     * direkt hintereinander bewirkt die Umkehrung der ursprünglichen
-     * Bewegungsrichtung, wodurch es bei anschließendem
+     * Ändert die aktuelle Bewegungsrichtung der Schlange 
+     * um 90 Grad im Uhrzeigersinn. 
+     * Durch diese Methode geht die Schlange nicht voran, 
+     * es ändert sich lediglich die Bewegungsrichtung. 
+     * Die zweimalige Anwendung dieser Methode 
+     * direkt hintereinander bewirkt die Umkehrung der ursprünglichen 
+     * Bewegungsrichtung, wodurch es bei anschließendem 
      * Aufruf von geheVoran zu einer Kollision kommt.
      */
     public void dreheRechts() {
@@ -69,28 +69,23 @@ public class Schlange {
         this.richtungsVektor = (this.richtungsVektor + 1) % 4;
     }
     /**
-     * Hierdurch ändert sich die aktuelle Bewegungsrichtung
-     * um 90 Grad gegen den Uhrzeigersinn.
-     * Durch diese Methode geht die Schlange nicht voran,
-     * es ändert sich lediglich die Bewegungsrichtung.
-     * Die zweimalige Anwendung dieser Methode
-     * direkt hintereinander bewirkt die Umkehrung der ursprünglichen
-     * Bewegungsrichtung, wodurch es bei anschließendem
+     * Ändert die aktuelle Bewegungsrichtung der Schlange 
+     * um 90 Grad gegen den Uhrzeigersinn. 
+     * Durch diese Methode geht die Schlange nicht voran, 
+     * es ändert sich lediglich die Bewegungsrichtung. 
+     * Die zweimalige Anwendung dieser Methode 
+     * direkt hintereinander bewirkt die Umkehrung der ursprünglichen 
+     * Bewegungsrichtung, wodurch es bei anschließendem 
      * Aufruf von geheVoran zu einer Kollision kommt.
      */
     public void dreheLinks() {
         //Dreht immer nach links.
         this.richtungsVektor = (this.richtungsVektor + 3) % 4;
     }
-
     /**
-     * Eine Instanzmethode, durch die die Schlange in ihrer aktuellen 
-     * Bewegungsrichtung um ein Feld vorangeht. 
-     * Überprüft außerdem, ob die Bewegung gültig ist und reagiert bei 
-     * Berührung mit dem Futter entsprechend durch Verlängern der 
-     * Schlange, um genau ein Segment.
-     * Der Parameter gibt die Position des Futters an.
-     * @param futter Parameter der die Position des Futters angibt.
+     * Hierdurch geht die Schlange in ihrer aktuellen Bewegungsrichtung 
+     * um ein Feld vor.
+     * @param futter Der Parameter gibt die Position des Futters an.
      * @return Schlange geht erfolgreich voran oder nicht.
      */
     public boolean geheVoran(Punkt futter) {
@@ -102,7 +97,6 @@ public class Schlange {
         boolean gehenErfolgreich = true;
         /*Frisst die Schlange...*/
         if (futter.istGleich(neuerKopf)) {
-            //...verlängert sie sich...
             schlangeVerlaengern(richtungen[richtungsVektor]);
             //...oder nicht.
         } else {
@@ -135,14 +129,14 @@ public class Schlange {
         this.schlange = neueSchlange;
     }
     /**
-     * Verlängert und bewegt die Schlange.
+     * Bewegt und verlängert die Schlange.
      * @param richtung Richtung der Bewegung.
      */
     public void schlangeVerlaengern(Punkt richtung) {
         /*Internes Array zur Verwaltung der Schlangensegmente. 
         Die Schlange wächst um genau 1 Segment.*/
         Punkt[] neueSchlange = new Punkt[schlange.length + 1];
-        //Der neuen Schlange werden die alten Elemente uebergeben.
+        //Der neuen Schlange werden die alten Elemente übergeben.
         for (int i = 0; i < schlange.length; i++) {
             neueSchlange[i + 1] = schlange[i];
         }
@@ -161,7 +155,7 @@ public class Schlange {
     /**
      * Diese Methode liefert die Position eines Schlangensegments.
      * Die Nummerierung der Segmente beginnt bei 0 (für den Kopf der Schlange).
-     * Das Segment 1 ist das erste hinter dem Kopf usw...
+     * Das Segment 1 ist das erste hinter dem Kopf usw.
      * @param index Der Index zur Segmentaddressierung.
      * @return Liefert das Segment an der Stelle des übergebenen Indexes.
      */
@@ -169,13 +163,11 @@ public class Schlange {
         return this.schlange[index];
     }
     /**
-     * Liefert genau dann true liefert, wenn auf der angegebenen Position
+     * Liefert genau dann true, wenn auf der angegebenen Position 
      * ein Segment der Schlange liegt.
-     * @param segmentposition Dient der Überpruefung, ob auf der angegebenen 
+     * @param segmentposition Dient der Überprüfung, ob auf der angegebenen 
      * Position ein Segment der Schlange liegt.
-     * @return Boolescher Wert der sich auf das Segment bezieht. 
-     * Ergibt er true ist das Spiel aus, 
-     * da die Schlange nicht weiter gehen kann.
+     * @return Boolescher Wert, der sich auf das Segment bezieht.
      */
     public boolean enthaeltPunkt(Punkt segmentposition) {
         /*Solange kein Segment an der Position liegt, 
@@ -186,7 +178,7 @@ public class Schlange {
         for (Punkt segment : schlange) {
             //Stimmt die Position überein...
             if (segmentposition.istGleich(segment)) {
-                //...kann die Schlange nicht weiter gehen.
+                //...kann die Schlange nicht weitergehen.
                 segmentLiegtAnPosition = true;
             }
         }
