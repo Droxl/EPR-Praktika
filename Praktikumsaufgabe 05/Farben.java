@@ -1,5 +1,5 @@
 /**
- * Diese Klasse enthaelt zwei statische Methoden zum Umgang mit 
+ * Diese Klasse enthält zwei statische Methoden zum Umgang mit 
  * einem additiven Farbmodell. 
  * Die Repräsentation der Farben basiert auf dem Farbmodell RGB, 
  * 256 stellt dabei die Basis dar.
