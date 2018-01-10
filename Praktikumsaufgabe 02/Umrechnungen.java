@@ -1,6 +1,6 @@
 /**
  * Dise Klasse dient zur Umrechnung der gegebenen Beträge nach der jeweiligen 
- * Formel und sie liefert die erwarteten Ergebnisse, in dem anderen Format.
+ * Formel und sie liefert die erwarteten Ergebnisse, in dem jeweils anderen Format.
  * @author Droxl
  */
 public class Umrechnungen {
