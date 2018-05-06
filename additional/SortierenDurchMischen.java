@@ -1,6 +1,6 @@
 /**
  * Sortieren durch Mischen.
- * @author ich
+ * @author Droxl
  */
 public class SortierenDurchMischen {
     /**
