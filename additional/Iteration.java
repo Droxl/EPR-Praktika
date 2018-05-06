@@ -1,7 +1,7 @@
 /**
  * Zwei Arten die Fakultät einer Zahl zu ermitteln, einmal durch Rekursion, 
  * einmal via Iteration.
- * @author ich
+ * @author Droxl
  */
 public class Iteration {
     /**
