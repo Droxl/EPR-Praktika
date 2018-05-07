@@ -1,4 +1,4 @@
-public class Uebung06 {
+public class Uebung {
     /**
      * Liefert die Anzahl Ziffern einer Zahl.
      * @param links Linke Seite der uebergebenen Zahl.
