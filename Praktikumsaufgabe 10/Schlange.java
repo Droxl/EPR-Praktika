@@ -1,6 +1,7 @@
 /**
  * Ein Objekt dieser Klasse repräsentiert die Schlange des Schlange-Spiels, 
  * das mit einem anwachsenden Array realisiert ist.
+ * @author Droxl
  */
 public class Schlange {
     /**
@@ -17,10 +18,6 @@ public class Schlange {
      * Richtung in die sich die Schlange momentan bewegt.
      */
     private int richtungsVektor;
-    /**
-     * Die Anzahl der Segmente, der Schlange, auf dem Spielfeld.
-     */
-    private int schlangenLaenge;
     /**
      * Erzeugt ein Schlange-Objekt mit nur einem Segment.
      * @param xPosition x-Position auf der Koordinatenachse.
@@ -51,8 +48,6 @@ public class Schlange {
         richtungen[3] = new Punkt(-1, 0);
         //Anfänglich bewegt sich die Schlange auf dem Spielfeld nach rechts.
         richtungsVektor = 1;
-        //Zu Anfang besteht die Schlange nur aus dem Kopf.
-        //schlangenLaenge = 1;
     }
     /**
      * Ändert die aktuelle Bewegungsrichtung der Schlange 
@@ -97,7 +92,19 @@ public class Schlange {
         boolean gehenErfolgreich = true;
         /*Frisst die Schlange...*/
         if (futter.istGleich(neuerKopf)) {
-            schlangeVerlaengern(richtungen[richtungsVektor]);
+            //Schlange verlängern!
+            
+            /*Internes Array zur Verwaltung der Schlangensegmente. 
+            Die Schlange wächst um genau 1 Segment.*/
+            Punkt[] neueSchlange = new Punkt[schlange.length + 1];
+            //Der neuen Schlange werden die alten Elemente übergeben.
+            for (int i = 0; i < schlange.length; i++) {
+                neueSchlange[i + 1] = schlange[i];
+            }
+            //Der neue Schlangenkopf bekommt die Attribute des alten zugewiesen.
+            neueSchlange[0] = schlange[0].addiere(richtungen[richtungsVektor]);
+            //Neue Referenz der Schlange auf ihre gewachsenen Segmente.
+            this.schlange = neueSchlange;
             //...oder nicht.
         } else {
             //Nur wenn Schlangenteile nicht kollidieren geht die Schlange voran.
@@ -126,23 +133,6 @@ public class Schlange {
         //Der neue Schlangenkopf bekommt die Attribute des alten zugewiesen.
         neueSchlange[0] = schlange[0].addiere(richtung);
         //Die Schlange verweist auf die neue Position der Schlange.
-        this.schlange = neueSchlange;
-    }
-    /**
-     * Bewegt und verlängert die Schlange.
-     * @param richtung Richtung der Bewegung.
-     */
-    public void schlangeVerlaengern(Punkt richtung) {
-        /*Internes Array zur Verwaltung der Schlangensegmente. 
-        Die Schlange wächst um genau 1 Segment.*/
-        Punkt[] neueSchlange = new Punkt[schlange.length + 1];
-        //Der neuen Schlange werden die alten Elemente übergeben.
-        for (int i = 0; i < schlange.length; i++) {
-            neueSchlange[i + 1] = schlange[i];
-        }
-        //Der neue Schlangenkopf bekommt die Attribute des alten zugewiesen.
-        neueSchlange[0] = schlange[0].addiere(richtung);
-        //Neue Referenz der Schlange auf ihre gewachsenen Segmente.
         this.schlange = neueSchlange;
     }
     /**
