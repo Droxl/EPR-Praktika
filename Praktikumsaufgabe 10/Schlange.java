@@ -113,27 +113,24 @@ public class Schlange {
                     gehenErfolgreich = false;
                 }
             }
-            schlangeBewegen(richtungen[richtungsVektor]);
+            /*
+            Bewegt die Schlange.
+            Internes Array zur Verwaltung der Schlangensegmente.
+            Die Schlange bewegt sich um 1 Feld vorwärts,
+            wobei sie nicht wächst.
+            */
+            Punkt[] neueSchlange = new Punkt[schlange.length];
+            //Der neuen Schlange werden die alten Elemente übergeben.
+            for (int i = 0; i < schlange.length - 1; i++) {
+                neueSchlange[i + 1] = schlange[i];
+            }
+            //Der neue Schlangenkopf bekommt die Attribute des alten zugewiesen.
+            neueSchlange[0] = schlange[0].addiere(richtungen[richtungsVektor]);
+            //Die Schlange verweist auf die neue Position der Schlange.
+            this.schlange = neueSchlange;
         }
         //Geht erfogreich voran, wenn keine Kollision vorliegt.
         return gehenErfolgreich;
-    }
-    /**
-     * Bewegt die Schlange.
-     * @param richtung Richtung der Bewegung.
-     */
-    public void schlangeBewegen(Punkt richtung) {
-        /*Internes Array zur Verwaltung der Schlangensegmente. 
-        Die Schlange bewegt sich um 1 Feld vorwärts, wobei sie nicht wächst.*/
-        Punkt[] neueSchlange = new Punkt[schlange.length];
-        //Der neuen Schlange werden die alten Elemente übergeben.
-        for (int i = 0; i < schlange.length - 1; i++) {
-            neueSchlange[i + 1] = schlange[i];
-        }
-        //Der neue Schlangenkopf bekommt die Attribute des alten zugewiesen.
-        neueSchlange[0] = schlange[0].addiere(richtung);
-        //Die Schlange verweist auf die neue Position der Schlange.
-        this.schlange = neueSchlange;
     }
     /**
      * Liefert die Länge der Schlange.
