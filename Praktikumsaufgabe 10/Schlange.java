@@ -90,11 +90,10 @@ public class Schlange {
         ob die Schlange nicht kollidert. 
         Ist das Vorangehen nicht erfolgreich, wird das Spiel beendet.*/
         boolean gehenErfolgreich = true;
-        /*Frisst die Schlange...*/
+        //Frisst die Schlange...
         if (futter.istGleich(neuerKopf)) {
-            //Schlange verlängern!
-            
-            /*Internes Array zur Verwaltung der Schlangensegmente. 
+            /*Schlange verlängern!
+            Internes Array zur Verwaltung der Schlangensegmente. 
             Die Schlange wächst um genau 1 Segment.*/
             Punkt[] neueSchlange = new Punkt[schlange.length + 1];
             //Der neuen Schlange werden die alten Elemente übergeben.
@@ -105,6 +104,7 @@ public class Schlange {
             neueSchlange[0] = schlange[0].addiere(richtungen[richtungsVektor]);
             //Neue Referenz der Schlange auf ihre gewachsenen Segmente.
             this.schlange = neueSchlange;
+            
             //...oder nicht.
         } else {
             //Nur wenn Schlangenteile nicht kollidieren geht die Schlange voran.
