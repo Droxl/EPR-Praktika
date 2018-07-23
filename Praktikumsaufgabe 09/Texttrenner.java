@@ -49,7 +49,7 @@ public class Texttrenner {
      */
     private boolean istTrennzeichen() {
         //Ein Zeichen, das angibt, ob ein Trennzeichen vorliegt.
-        int semaphor = 0;
+        int flag = 0;
         //Indikator, ob das übergebene Zeichen ein Trennzeichen ist.
         boolean istTrennzeichen = false;
         //Variable zur Bestimmung der Position des Trennzeichens.
@@ -64,14 +64,14 @@ public class Texttrenner {
             if (zeichenkette.charAt(position) == trennerkette.charAt(
                     trennzeichenAnPosition)) {
                 /*...wird das Semaphor auf 1 gesetzt.*/
-                semaphor = 1;
+                flag = 1;
             }
             /*Die Position des Trennzeichens in der Trennerkette 
             wird um 1 erhöht.*/
             trennzeichenAnPosition = trennzeichenAnPosition + 1;
         }
-        /*Steht das Semaphor bei 1...*/
-        if (semaphor == 1) {
+        /*Steht Flag bei 1...*/
+        if (flag == 1) {
             /*...liegt ein Trennzeichen vor...*/
             istTrennzeichen = true;
         }
